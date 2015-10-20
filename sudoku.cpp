@@ -53,12 +53,30 @@ int main()
 }
 void play(int board[9][9],bool reference[9][9])
 {
-    	int col,row,guess;
+	int col=0,row=0,guess=0;
         outputBoard(board,reference);
-        cout<<"Enter the row, column, and guess you have for the puzzle, separated by spaces. They are numbered 1-9 top to bottom and left to right.\n";
-        cin>>row;
-        cin>>col;
-        cin>>guess;
+        cout<<"Enter the row, column, and guess you have for the puzzle, separated by spaces. They are numbered 1-9 top to bottom and left to right.\n";	
+        while (!(cin >> row)) 
+	{
+	cin.clear();
+	cin.ignore(10,'\n');
+	cout<<"Unexpected input, try again.\n";
+	return;
+	}
+        while (!(cin >> col)) 
+	{
+	cin.clear();
+	cin.ignore(10,'\n');
+	cout<<"Unexpected input, try again.\n";
+	return;
+	}
+        while (!(cin >> guess)) 
+	{
+	cin.clear();
+	cin.ignore(10,'\n');
+	cout<<"Unexpected input, try again.\n";
+	return;
+	}
         if(!(col<1||col>9||row<0||row>9||guess<0||guess>9)&&!reference[row-1][col-1])
         {
             board[row-1][col-1]=guess;
